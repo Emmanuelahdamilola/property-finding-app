@@ -1,11 +1,10 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-
-import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
+import { useRouter } from 'expo-router';
 
 export default function VerifyScreen() {
-  const navigation = useNavigation<any>();
+  const router = useRouter()
 
   const [counter, setCounter] = useState(58);
 
@@ -24,11 +23,11 @@ export default function VerifyScreen() {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('Profile');
+      router.push('./ProfileScreen');
     }, 3000)
 
     return () => clearTimeout(timer);
-  }, [navigation]);
+  }, [router]);
 
   return (
      <View style={styles.container}>
